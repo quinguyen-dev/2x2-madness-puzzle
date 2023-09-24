@@ -1,4 +1,4 @@
-import type { Configuration } from "./types";
+import type { Configuration } from "./config.types";
 
 export const config_4x4: Configuration = {
   name: "Configuration #1",

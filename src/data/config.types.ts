@@ -10,5 +10,3 @@ export type SquareInfo = {
   row: string;
   column: string;
 };
-
-// todo clean up the typings here
