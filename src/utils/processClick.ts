@@ -1,5 +1,6 @@
-import Model from "../../../../model/Model";
+import Model from "../model/Model";
 
+/* Controller */
 export default function processClick(model: Model, key: number) {
   const { size, point } = model.board;
 

@@ -15,13 +15,17 @@ export class Square {
 
 export class Board {
   squares: Square[];
+  selected: Square[];
   size: number;
   point: Point;
+  quadrantsLeft: number;
 
   constructor(config: Configuration) {
     this.squares = [];
+    this.selected = [];
     this.size = parseInt(config.numColumns);
     this.point = new Point(-2, -2);
+    this.quadrantsLeft = Math.floor(Math.pow(this.size, 2) / 4);
 
     for (let csq of config.baseSquares) {
       let sq = new Square(parseInt(csq.row), parseInt(csq.column), csq.color);
