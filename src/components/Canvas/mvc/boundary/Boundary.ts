@@ -1,10 +1,6 @@
-import Model from "../../../../model/Model";
+import Model, { Square } from "../../../../model/Model";
 
-export default function redrawCanvas(
-  model: Model,
-  canvas: HTMLCanvasElement,
-  appObj: any
-) {
+export default function redrawCanvas(model: Model, canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   /* Clear canvas content */
@@ -20,18 +16,27 @@ export default function redrawCanvas(
     ctx.stroke();
   }
 
-  /* Draw circles */
-  for (let i = 1, n = model.board.size; i < n; i++) {
-    for (let j = 1; j < n; j++) {
-      /* Draw circles */
-      ctx.beginPath();
-      ctx.arc(60 * i, 60 * j, 10, 0, 2 * Math.PI, false);
-      ctx.fillStyle = "white";
-      ctx.fill();
+  /* Highlight selected pieces */
+  const { point, squares } = model.board;
 
-      /* Draw circle border */
-      ctx.lineWidth = 2;
-      ctx.stroke();
+  let selected: Square[] = [];
+  for (let square of squares) {
+    if (
+      point.y <= square.row &&
+      square.row < point.y + 2 &&
+      point.x <= square.column &&
+      square.column < point.x + 2
+    ) {
+      selected.push(square);
     }
+
+    if (selected.length === 4) break;
+  }
+
+  ctx.beginPath();
+  for (let square of selected) {
+    ctx.strokeStyle = "magenta";
+    ctx.rect(square.column * 60, square.row * 60, 60, 60);
+    ctx.stroke();
   }
 }

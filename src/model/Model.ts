@@ -21,7 +21,7 @@ export class Board {
   constructor(config: Configuration) {
     this.squares = [];
     this.size = parseInt(config.numColumns);
-    this.point = new Point(0, 0);
+    this.point = new Point(-2, -2);
 
     for (let csq of config.baseSquares) {
       let sq = new Square(parseInt(csq.row), parseInt(csq.column), csq.color);
@@ -47,7 +47,7 @@ export default class Model {
 
   constructor() {
     this.configs = [config_4x4, config_5x5, config_6x6];
-    this.currentConfig = 2;
+    this.currentConfig = 0;
     this.board = new Board(this.configs[this.currentConfig]);
   }
 }
