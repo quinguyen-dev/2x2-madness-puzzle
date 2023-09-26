@@ -1,6 +1,5 @@
 import Model from "../model/Model";
 
-/* Controller */
 export default function rotateSquare(model: Model, direction: number) {
   const { selected } = model.board;
 

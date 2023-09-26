@@ -19,6 +19,7 @@ export class Board {
   size: number;
   point: Point;
   quadrantsLeft: number;
+  moves: number;
 
   constructor(config: Configuration) {
     this.squares = [];
@@ -26,6 +27,7 @@ export class Board {
     this.size = parseInt(config.numColumns);
     this.point = new Point(-2, -2);
     this.quadrantsLeft = Math.floor(Math.pow(this.size, 2) / 4);
+    this.moves = 0;
 
     for (let csq of config.baseSquares) {
       let sq = new Square(parseInt(csq.row), parseInt(csq.column), csq.color);
