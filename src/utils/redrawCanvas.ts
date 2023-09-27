@@ -1,11 +1,11 @@
-import Model from "../model/Model";
+import type Model from "../model/Model";
 
 /* Boundary */
 export default function redrawCanvas(model: Model, canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
   /* Clear canvas content */
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // assume square region
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   /* Draw board on canvas */
   for (let square of model.board.squares) {
@@ -27,3 +27,5 @@ export default function redrawCanvas(model: Model, canvas: HTMLCanvasElement) {
     ctx.stroke();
   }
 }
+
+// todo click solved adds a move

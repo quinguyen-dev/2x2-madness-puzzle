@@ -1,5 +1,5 @@
 import { config_4x4, config_5x5, config_6x6 } from "../data/configs";
-import type { Configuration } from "../data/config.types";
+import type { Configuration } from "../data/types";
 
 export class Square {
   row: number;
