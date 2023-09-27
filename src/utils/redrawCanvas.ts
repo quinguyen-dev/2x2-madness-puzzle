@@ -12,20 +12,8 @@ export default function redrawCanvas(model: Model, canvas: HTMLCanvasElement) {
     ctx.fillStyle = square.color;
     ctx.fillRect(square.column * 60, square.row * 60, 60, 60);
     ctx.strokeStyle = "#2F528F";
-    ctx.lineWidth = 4;
-    ctx.rect(square.column * 60, square.row * 60, 60, 60);
-    ctx.stroke();
-  }
-
-  /* Draw highlight around squares */
-  ctx.beginPath();
-  for (let square of model.board.selected) {
-    ctx.fillStyle = square.color;
-    ctx.fillRect(square.column * 60, square.row * 60, 60, 60);
-    ctx.strokeStyle = "red";
+    ctx.lineWidth = 2;
     ctx.rect(square.column * 60, square.row * 60, 60, 60);
     ctx.stroke();
   }
 }
-
-// todo click solved adds a move
