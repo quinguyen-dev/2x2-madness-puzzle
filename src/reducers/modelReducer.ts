@@ -1,6 +1,7 @@
 import { cloneDeep } from "lodash";
 import type Model from "../model/Model";
 import type { ModelActions } from "./types";
+import { Board } from "../model/Model";
 
 export enum ControllerActionType {
   PROCESS_CLICK = "PROCESS_CLICK",
@@ -93,6 +94,13 @@ export default function modelReducer(state: Model, action: ModelActions) {
       }
 
       return { ...state, board: { ...clone, moves: clone.moves + 1 } };
+    }
+
+    case ControllerActionType.RESET_GAME: {
+      const { configs, currentConfig } = state;
+      let board = new Board(configs[currentConfig]);
+
+      return { ...state, board: board };
     }
 
     default:

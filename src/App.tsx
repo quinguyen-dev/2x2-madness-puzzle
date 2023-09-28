@@ -26,8 +26,10 @@ export default function App() {
       });
   };
 
+  const resetGame = () => dispatch({ type: ControllerActionType.RESET_GAME });
+
   return (
-    <main className="h-screen flex justify-center items-center flex-col bg-black">
+    <main className="h-screen flex justify-center items-center flex-col bg-black space-y-4">
       <div className="flex justify-center items-center relative">
         <div
           className="absolute aspect-square grid justify-items-center items-center w-full p-[30px]"
@@ -54,20 +56,20 @@ export default function App() {
             />
           </div>
         </div>
-        <canvas
-          className="bg-white"
-          tabIndex={1}
-          ref={canvasRef}
-          width={size * 60}
-          height={size * 60}
-        />
+        <canvas ref={canvasRef} width={size * 60} height={size * 60} />
       </div>
-      <div>
+      <div className="space-x-4">
         <button
           className="bg-white p-2 rounded-md"
           onClick={() => rotateGroup(0)}
         >
           Rotate left
+        </button>
+        <button
+          className="bg-red-700 p-2 rounded-md text-white"
+          onClick={resetGame}
+        >
+          Reset
         </button>
         <button
           className="bg-white p-2 rounded-md"
@@ -76,6 +78,7 @@ export default function App() {
           Rotate right
         </button>
       </div>
+      <div className="text-white font-bold">Moves: {state.board.moves}</div>
     </main>
   );
 }
