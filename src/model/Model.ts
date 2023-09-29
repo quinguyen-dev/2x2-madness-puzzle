@@ -22,16 +22,24 @@ export class Board {
   moves: number;
 
   constructor(config: Configuration) {
-    this.squares = [];
+    const size = parseInt(config.numRows);
+    const totalSquares = Math.pow(size, 2);
+
+    this.size = size;
     this.selected = [];
-    this.size = parseInt(config.numColumns);
     this.point = new Point(-2, -2);
-    this.quadrantsLeft = Math.floor(Math.pow(this.size, 2) / 4);
+    this.quadrantsLeft = Math.floor(totalSquares / 4);
     this.moves = 0;
+    this.squares = new Array(totalSquares).fill(undefined).map((_, i) => {
+      let [x, y] = [i % size, Math.floor(i / size)];
+      return new Square(x, y, "undefined");
+    });
 
     for (let csq of config.baseSquares) {
-      let sq = new Square(parseInt(csq.row), parseInt(csq.column), csq.color);
-      this.squares.push(sq);
+      let [row, col] = [parseInt(csq.row), parseInt(csq.column)];
+      let square = new Square(row, col, csq.color);
+
+      this.squares[this.size * row + col] = square;
     }
   }
 }
