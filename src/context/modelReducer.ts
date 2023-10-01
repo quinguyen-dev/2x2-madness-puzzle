@@ -18,7 +18,7 @@ export type ModelActions = {
 };
 
 export default function modelReducer(state: Model, action: ModelActions) {
-  let { type, direction, key } = action;
+  let { type, direction, key, config } = action;
 
   switch (type) {
     case ControllerActionType.PROCESS_CLICK: {
@@ -40,22 +40,27 @@ export default function modelReducer(state: Model, action: ModelActions) {
       );
 
       /* Determine if quadrant is solved */
-      let matching = true;
+      let matching = true,
+        isAlreadySolved = true;
       for (let sq of selected) {
         matching = matching && sq.color === selected[0].color;
+        isAlreadySolved = isAlreadySolved && sq.color === "undefined";
       }
 
       /* Update array is quadrant is solved */
-      if (matching) {
+      if (matching && !isAlreadySolved) {
         for (let sq of selected) {
           sq = sq as Square;
           squares[size * sq.row + sq.column].color = "undefined";
         }
-
         clone.quadrantsLeft--;
-        selected.length = 0;
+      }
+
+      /* If the quadrant matched or was already solved, unselect point and group */
+      if (matching || isAlreadySolved) {
         x = -2;
         y = -2;
+        selected.length = 0;
       }
 
       return {
@@ -105,8 +110,12 @@ export default function modelReducer(state: Model, action: ModelActions) {
     }
 
     case ControllerActionType.RESET_GAME: {
-      const { configs, currentConfig } = state;
-      const board = new Board(configs[currentConfig]);
+      const { configs } = state;
+
+      config = config as number;
+      localStorage.setItem("config", config.toString());
+
+      const board = new Board(configs[config]);
       return { ...state, board: board };
     }
 
@@ -114,50 +123,3 @@ export default function modelReducer(state: Model, action: ModelActions) {
       return state;
   }
 }
-
-// /* Create map of values */
-// const offset = size * point.y + point.x;
-// let map = [4];
-// map[0] = offset;
-// map[1] = offset + 1;
-// map[2] = offset + size;
-// map[3] = offset + size + 1;
-
-// let mapTemp = map[a];
-// map[a] = map[b];
-// map[b] = mapTemp;
-
-// /* Rotate color values in array */
-// let [l, r] = [0, 3];
-// while (l < r) {
-//   let temp = selected[l];
-
-//   /* [null -> null, Square -> null] */
-//   if (temp === null) {
-//     /* [Square -> null] */
-//     squares[map[l]] = squares[map[r]];
-
-//     if (squares[map[l]] !== null) {
-//       let [x, y] = [
-//         map[l] % (clone.size - 1),
-//         Math.floor(map[l] / (clone.size - 1)),
-//       ];
-//       squares[map[l]]!.row = x;
-//       squares[map[l]]!.column = y;
-//     }
-
-//     selected[l] = selected[r];
-//     selected[r] = temp;
-//   } else if (selected[r] === null) {
-//     /* [null -> Square ] */
-//     selected[l] = selected[r];
-//     squares[map[l]] = null;
-//     selected[r] = temp;
-//   } else {
-//     /* [Square -> Square ] */
-//     let color = temp.color;
-//     selected[l]!.color = selected[r]!.color;
-//     selected[r]!.color = color;
-//   }
-//   l++;
-// }

@@ -30,10 +30,9 @@ export class Board {
     this.point = new Point(-2, -2);
     this.quadrantsLeft = Math.floor(totalSquares / 4);
     this.moves = 0;
-    this.squares = new Array(totalSquares).fill(undefined).map((_, i) => {
-      let [x, y] = [i % size, Math.floor(i / size)];
-      return new Square(x, y, "undefined");
-    });
+    this.squares = new Array(totalSquares)
+      .fill(undefined)
+      .map((_, i) => new Square(i % size, Math.floor(i / size), "undefined"));
 
     for (let csq of config.baseSquares) {
       let [row, col] = [parseInt(csq.row), parseInt(csq.column)];
@@ -59,9 +58,9 @@ export default class Model {
   currentConfig: number;
   board: Board;
 
-  constructor() {
+  constructor(currentConfig: number) {
     this.configs = [config_4x4, config_5x5, config_6x6];
-    this.currentConfig = 0;
+    this.currentConfig = currentConfig;
     this.board = new Board(this.configs[this.currentConfig]);
   }
 }
