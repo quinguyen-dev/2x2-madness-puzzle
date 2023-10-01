@@ -5,6 +5,6 @@ import App from "../App";
 describe("[App Component] Rendering", () => {
   it("should render no children", () => {
     const component = render(<App />);
-    expect(true).toBeTruthy();
+    expect(component).toMatchSnapshot();
   });
 });

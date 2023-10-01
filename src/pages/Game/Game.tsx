@@ -102,21 +102,24 @@ export default function Game() {
       </div>
       {state.board.quadrantsLeft === 0 && (
         <div className="bg-gray-500 absolute z-30 flex p-4 flex-col rounded-md">
-          <h1 className="text-4xl">Congratulations!You solved the puzzle!</h1>
+          <h1 className="text-4xl">Congratulations! You solved the puzzle!</h1>
           <div className="flex mt-8 space-x-4 space-between text-black h-12">
             <button
+              aria-label="Play the 4x4 configuration"
               className="bg-white w-full rounded-lg justify-center items-center flex"
               onClick={() => resetGame(0)}
             >
               4x4
             </button>
             <button
+              aria-label="Play the 5x5 configuration"
               className="bg-white w-full rounded-lg justify-center items-center flex"
               onClick={() => resetGame(1)}
             >
               5x5
             </button>
             <button
+              aria-label="Play the 6x6 configuration"
               className="bg-white w-full rounded-lg justify-center items-center flex"
               onClick={() => resetGame(2)}
             >

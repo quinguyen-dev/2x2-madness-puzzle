@@ -6,12 +6,14 @@ exports[`[Group Component] Rendering > should render no children 1`] = `
   "baseElement": <body>
     <div>
       <div
+        aria-label="Selected group"
         class="grid grid-rows-2 grid-cols-2 absolute"
       />
     </div>
   </body>,
   "container": <div>
     <div
+      aria-label="Selected group"
       class="grid grid-rows-2 grid-cols-2 absolute"
     />
   </div>,
