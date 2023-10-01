@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useReducer, useRef, useState } from "react";
 import Model from "../../model/Model";
 import redrawCanvas from "../../context/redrawCanvas";
@@ -13,7 +14,10 @@ enum Direction {
 export default function Game() {
   const configuration = parseInt(localStorage.getItem("config") || "0");
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [state, dispatch] = useReducer(modelReducer, new Model(configuration));
+  const [state, dispatch] = React.useReducer(
+    modelReducer,
+    new Model(configuration)
+  );
   const [point, setPoint] = useState(-1);
 
   const size = state.board.size;

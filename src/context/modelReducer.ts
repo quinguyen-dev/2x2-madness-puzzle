@@ -68,7 +68,7 @@ export default function modelReducer(state: Model, action: ModelActions) {
         board: {
           ...clone,
           selected: selected,
-          moves: clone.moves + (matching ? 1 : 0),
+          moves: clone.moves + (matching && !isAlreadySolved ? 1 : 0),
           point: {
             x: x,
             y: y,
@@ -119,7 +119,7 @@ export default function modelReducer(state: Model, action: ModelActions) {
       return { ...state, board: board };
     }
 
-    default:
-      return state;
+    // default:
+    //   return state;
   }
 }
