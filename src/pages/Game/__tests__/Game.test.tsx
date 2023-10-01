@@ -187,7 +187,7 @@ describe("[Game] Solving a whole game", () => {
     expect(button).toBeInTheDocument();
   });
 
-  it("should reset the game", () => {
+  it("should reset the game to 4x4", () => {
     const button = screen.getByLabelText(/Play the 4x4 configuration/);
     fireEvent.click(button);
 
@@ -201,7 +201,7 @@ describe("[Game] Solving a whole game", () => {
     expect(localStorage.getItem("config")).toBe("1");
   });
 
-  it("should reset the game to 5x5", () => {
+  it("should reset the game to 6x6", () => {
     const button = screen.getByLabelText(/Play the 6x6 configuration/);
     fireEvent.click(button);
 
