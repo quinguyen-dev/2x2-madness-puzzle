@@ -6,7 +6,11 @@ interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function Group({ group, style }: GroupProps) {
   return (
-    <div className="grid grid-rows-2 grid-cols-2 absolute" style={style}>
+    <div
+      aria-label="Selected group"
+      className="grid grid-rows-2 grid-cols-2 absolute"
+      style={style}
+    >
       {group.map((square, i) => (
         <div
           key={i}
