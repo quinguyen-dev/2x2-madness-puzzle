@@ -74,10 +74,15 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
               class="absolute w-full h-full"
             >
               <div
-                aria-label="Selected group"
-                class="grid grid-rows-2 grid-cols-2 absolute"
+                class="absolute bg-black"
                 style="left: -120px; top: -120px;"
-              />
+              >
+                <div
+                  aria-label="Selected group"
+                  class="grid grid-rows-2 grid-cols-2"
+                  style="transform: rotateZ(0deg); transition: all 0.2s linear;"
+                />
+              </div>
             </div>
           </div>
           <canvas
@@ -97,11 +102,13 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
           style="width: 240px;"
         >
           <button
+            aria-label="Rotate the group counterclockwise"
             class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
           >
             Rotate left
           </button>
           <button
+            aria-label="Rotate the group clockwise"
             class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
           >
             Rotate right
@@ -180,10 +187,15 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
             class="absolute w-full h-full"
           >
             <div
-              aria-label="Selected group"
-              class="grid grid-rows-2 grid-cols-2 absolute"
+              class="absolute bg-black"
               style="left: -120px; top: -120px;"
-            />
+            >
+              <div
+                aria-label="Selected group"
+                class="grid grid-rows-2 grid-cols-2"
+                style="transform: rotateZ(0deg); transition: all 0.2s linear;"
+              />
+            </div>
           </div>
         </div>
         <canvas
@@ -203,11 +215,13 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
         style="width: 240px;"
       >
         <button
+          aria-label="Rotate the group counterclockwise"
           class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
         >
           Rotate left
         </button>
         <button
+          aria-label="Rotate the group clockwise"
           class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
         >
           Rotate right

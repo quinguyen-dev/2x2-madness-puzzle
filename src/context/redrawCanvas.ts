@@ -17,4 +17,12 @@ export default function redrawCanvas(model: Model, canvas: HTMLCanvasElement) {
     ctx.rect(csq.column * 60, csq.row * 60, 60, 60);
     ctx.stroke();
   }
+
+  ctx.beginPath();
+  for (let sq1 of model.board.selected) {
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 1;
+    ctx.rect(sq1.column * 60, sq1.row * 60, 60, 60);
+    ctx.stroke();
+  }
 }

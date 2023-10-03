@@ -1,9 +1,11 @@
 import { useEffect, useReducer, useRef, useState } from "react";
-import Model from "../../model/Model";
-import redrawCanvas from "../../context/redrawCanvas";
-import modelReducer, { ControllerActionType } from "../../context/modelReducer";
-import { Group } from "../../components";
 import { Link } from "react-router-dom";
+import { cloneDeep } from "lodash";
+import modelReducer, { ControllerActionType } from "../../context/modelReducer";
+import redrawCanvas from "../../context/redrawCanvas";
+import { Group } from "../../components";
+import Model from "../../model/Model";
+import type { Square } from "../../model/Model";
 
 enum Direction {
   COUNTERCLOCKWISE = 0,
@@ -13,28 +15,43 @@ enum Direction {
 export default function Game() {
   const configuration = parseInt(localStorage.getItem("config") || "0");
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [state, dispatch] = useReducer(modelReducer, new Model(configuration));
-  const [point, setPoint] = useState(-1);
-  const [settings, setSettings] = useState(false);
 
-  const size = state.board.size;
+  const [state, dispatch] = useReducer(modelReducer, new Model(configuration));
+  const [settings, setSettings] = useState(false);
+  const [rotate, setRotate] = useState(0);
+  const [clone, setClone] = useState<{ point: number; selected: Square[] }>({
+    point: 0,
+    selected: [],
+  });
+
+  const { size, point, selected, moves, quadrantsLeft } = state.board;
+  const activePoint = point.y * (size - 1) + point.x;
 
   useEffect(() => {
     /* Redraw underlying canvas */
     if (canvasRef.current !== null) redrawCanvas(state, canvasRef.current);
+
+    /* Determine if a new point was clicked */
+    if (clone.point !== activePoint) {
+      setClone({ point: activePoint, selected: cloneDeep(selected) });
+      setRotate(0);
+    }
   }, [state]);
 
+  /* Action for clicking a node */
   const nodeClicked = (key: number) =>
     dispatch({ type: ControllerActionType.PROCESS_CLICK, key: key });
 
+  /* Action for rotating a group */
   const rotateGroup = (direction: Direction) => {
-    if (state.board.point.x >= 0)
+    if (point.x >= 0)
       dispatch({
         type: ControllerActionType.ROTATE_GROUP,
         direction: direction,
       });
   };
 
+  /* Action for resetting the game */
   const resetGame = (config: number) =>
     dispatch({ type: ControllerActionType.RESET_GAME, config: config });
 
@@ -42,7 +59,7 @@ export default function Game() {
     <>
       <div
         className={`w-1/2 flex flex-col items-center h-3/4 justify-center relative ${
-          settings || state.board.quadrantsLeft === 0
+          settings || quadrantsLeft === 0
             ? "opacity-50 pointer-events-none"
             : "opacity-100 pointer-events-auto"
         }`}
@@ -87,25 +104,36 @@ export default function Game() {
                 key={key}
                 style={{
                   backgroundColor:
-                    point === key && state.board.selected.length !== 0
+                    point.y * (size - 1) + point.x === key &&
+                    selected.length !== 0
                       ? "red"
                       : "",
                 }}
                 className="bg-white rounded-xl z-20 w-6 aspect-square border-2 border-black hover:bg-red-300"
-                onClick={() => {
-                  setPoint(key);
-                  nodeClicked(key);
-                }}
+                onClick={() => nodeClicked(key)}
               />
             ))}
             <div className="absolute w-full h-full">
-              <Group
-                group={state.board.selected}
+              <div
+                className="absolute bg-black"
                 style={{
-                  left: state.board.point.x * 60,
-                  top: state.board.point.y * 60,
+                  left: point.x * 60,
+                  top: point.y * 60,
                 }}
-              />
+              >
+                {clone.point === activePoint && (
+                  <Group
+                    style={{
+                      transform: `rotateZ(${rotate}deg)`,
+                      transition:
+                        rotate === 0 && clone.point !== activePoint
+                          ? "all -1s linear"
+                          : "all 0.2s linear",
+                    }}
+                    group={clone.selected}
+                  />
+                )}
+              </div>
             </div>
           </div>
           <canvas
@@ -118,7 +146,7 @@ export default function Game() {
 
         {/* Controls and stats */}
         <div className="text-white mt-4 font-bold text-center">
-          Move count: {state.board.moves}
+          Move count: {moves}
         </div>
         <div
           className="flex justify-center mt-4 space-x-2 "
@@ -127,14 +155,20 @@ export default function Game() {
           <button
             aria-label="Rotate the group counterclockwise"
             className="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
-            onClick={() => rotateGroup(Direction.COUNTERCLOCKWISE)}
+            onClick={() => {
+              rotateGroup(Direction.COUNTERCLOCKWISE);
+              setRotate(rotate - 90);
+            }}
           >
             Rotate left
           </button>
           <button
             aria-label="Rotate the group clockwise"
             className="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
-            onClick={() => rotateGroup(Direction.CLOCKWISE)}
+            onClick={() => {
+              rotateGroup(Direction.CLOCKWISE);
+              setRotate(rotate + 90);
+            }}
           >
             Rotate right
           </button>
@@ -174,13 +208,11 @@ export default function Game() {
       )}
 
       {/* Winning message */}
-      {state.board.quadrantsLeft === 0 && (
+      {quadrantsLeft === 0 && (
         <div className="bg-[#121214] text-white border-2 border-gray-700 absolute z-30 flex p-4 flex-col">
           <h1 className="text-2xl text-center">
             You solved the puzzle in{" "}
-            <span className="font-bold text-green-600">
-              {state.board.moves} moves!
-            </span>
+            <span className="font-bold text-green-600">{moves} moves!</span>
             <br />
             Try another
           </h1>

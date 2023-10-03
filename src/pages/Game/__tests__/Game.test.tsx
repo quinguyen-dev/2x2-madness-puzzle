@@ -78,7 +78,7 @@ describe("[Game] Events", () => {
     const point = screen.getByLabelText(/Point 0/);
     fireEvent.click(point);
 
-    const squares = screen.getByLabelText(/Selected group/)
+    let squares = screen.getByLabelText(/Selected group/)
       .children as HTMLCollectionOf<HTMLDivElement>;
     expect(squares[0].style.backgroundColor).toBe("green");
     expect(squares[1].style.backgroundColor).toBe("yellow");
@@ -88,9 +88,15 @@ describe("[Game] Events", () => {
     const rotate = screen.getByText(/Rotate right/);
     fireEvent.click(rotate);
 
+    const point2 = screen.getByLabelText(/Point 1/);
+    fireEvent.click(point2);
+
+    squares = screen.getByLabelText(/Selected group/)
+      .children as HTMLCollectionOf<HTMLDivElement>;
+
     expect(squares[0].style.backgroundColor).toBe("green");
-    expect(squares[1].style.backgroundColor).toBe("green");
-    expect(squares[2].style.backgroundColor).toBe("grey");
+    expect(squares[1].style.backgroundColor).toBe("grey");
+    expect(squares[2].style.backgroundColor).toBe("yellow");
     expect(squares[3].style.backgroundColor).toBe("yellow");
   });
 });

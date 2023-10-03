@@ -7,14 +7,14 @@ exports[`[Group Component] Rendering > should render no children 1`] = `
     <div>
       <div
         aria-label="Selected group"
-        class="grid grid-rows-2 grid-cols-2 absolute"
+        class="grid grid-rows-2 grid-cols-2"
       />
     </div>
   </body>,
   "container": <div>
     <div
       aria-label="Selected group"
-      class="grid grid-rows-2 grid-cols-2 absolute"
+      class="grid grid-rows-2 grid-cols-2"
     />
   </div>,
   "debug": [Function],

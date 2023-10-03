@@ -1,14 +1,15 @@
+import React from "react";
 import { Square } from "../../model/Model";
 
 interface GroupProps extends React.HTMLAttributes<HTMLDivElement> {
   group: Square[];
 }
 
-export default function Group({ group, style }: GroupProps) {
+function Group({ group, style }: GroupProps) {
   return (
     <div
       aria-label="Selected group"
-      className="grid grid-rows-2 grid-cols-2 absolute"
+      className="grid grid-rows-2 grid-cols-2"
       style={style}
     >
       {group.map((square, i) => (
@@ -24,3 +25,5 @@ export default function Group({ group, style }: GroupProps) {
     </div>
   );
 }
+
+export default React.memo(Group);

@@ -58,8 +58,8 @@ export default function modelReducer(state: Model, action: ModelActions) {
 
       /* If the quadrant matched or was already solved, unselect point and group */
       if (matching || isAlreadySolved) {
-        x = -2;
-        y = -2;
+        // x = -2;
+        // y = -2;
         selected.length = 0;
       }
 
@@ -119,7 +119,7 @@ export default function modelReducer(state: Model, action: ModelActions) {
       return { ...state, board: board };
     }
 
-    // default:
-    //   return state;
+    default:
+      return state;
   }
 }
