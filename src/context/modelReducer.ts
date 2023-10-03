@@ -83,7 +83,8 @@ export default function modelReducer(state: Model, action: ModelActions) {
       const clone = cloneDeep(state.board);
       const { selected } = clone;
 
-      if (selected.length === 4) {
+      const validSelection = selected.length === 4;
+      if (validSelection) {
         const [a, b] = direction ? [2, 3] : [0, 1];
 
         /* Swap two indexes for cyclic rotate */
@@ -106,7 +107,10 @@ export default function modelReducer(state: Model, action: ModelActions) {
         selected[b] = squareTemp;
       }
 
-      return { ...state, board: { ...clone, moves: clone.moves + 1 } };
+      return {
+        ...state,
+        board: { ...clone, moves: clone.moves + (validSelection ? 1 : 0) },
+      };
     }
 
     case ControllerActionType.RESET_GAME: {
