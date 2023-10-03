@@ -6,42 +6,86 @@ exports[`[App Component] Rendering > should render no children 1`] = `
   "baseElement": <body>
     <div>
       <main
-        class="h-screen flex justify-center items-center flex-col bg-black"
+        class="h-screen flex justify-center items-center flex-col bg-gradient-radial from-[#121212] to-[#000000]"
       >
         <div
           class="text-white"
         >
           <h1
-            class="text-6xl"
+            class="text-6xl font-black select-none"
           >
             2x2 Madness
           </h1>
           <div
-            class="flex mt-8 space-x-4 space-between text-black h-12"
+            class="flex flex-col space-y-2 mt-6 text-black"
           >
             <a
-              class="bg-white w-full rounded-lg justify-center items-center flex"
+              class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
               href="/game"
             >
-              4
-              x
-              4
+              <div
+                class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              />
+              <span
+                class="relative pl-4 group-hover:text-black group-hover:font-bold"
+              >
+                [
+                4
+                x
+                4
+                ]
+                 
+                E
+                a
+                s
+                y
+              </span>
             </a>
             <a
-              class="bg-white w-full rounded-lg justify-center items-center flex"
+              class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
               href="/game"
             >
-              5
-              x
-              5
+              <div
+                class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              />
+              <span
+                class="relative pl-4 group-hover:text-black group-hover:font-bold"
+              >
+                [
+                5
+                x
+                5
+                ]
+                 
+                M
+                e
+                d
+                i
+                u
+                m
+              </span>
             </a>
             <a
-              class="bg-white w-full rounded-lg justify-center items-center flex"
+              class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
               href="/game"
             >
-              6
-              x
-              6
+              <div
+                class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              />
+              <span
+                class="relative pl-4 group-hover:text-black group-hover:font-bold"
+              >
+                [
+                6
+                x
+                6
+                ]
+                 
+                H
+                a
+                r
+                d
+              </span>
             </a>
           </div>
         </div>
@@ -50,42 +94,86 @@ exports[`[App Component] Rendering > should render no children 1`] = `
   </body>,
   "container": <div>
     <main
-      class="h-screen flex justify-center items-center flex-col bg-black"
+      class="h-screen flex justify-center items-center flex-col bg-gradient-radial from-[#121212] to-[#000000]"
     >
       <div
         class="text-white"
       >
         <h1
-          class="text-6xl"
+          class="text-6xl font-black select-none"
         >
           2x2 Madness
         </h1>
         <div
-          class="flex mt-8 space-x-4 space-between text-black h-12"
+          class="flex flex-col space-y-2 mt-6 text-black"
         >
           <a
-            class="bg-white w-full rounded-lg justify-center items-center flex"
+            class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
             href="/game"
           >
-            4
-            x
-            4
+            <div
+              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            />
+            <span
+              class="relative pl-4 group-hover:text-black group-hover:font-bold"
+            >
+              [
+              4
+              x
+              4
+              ]
+               
+              E
+              a
+              s
+              y
+            </span>
           </a>
           <a
-            class="bg-white w-full rounded-lg justify-center items-center flex"
+            class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
             href="/game"
           >
-            5
-            x
-            5
+            <div
+              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            />
+            <span
+              class="relative pl-4 group-hover:text-black group-hover:font-bold"
+            >
+              [
+              5
+              x
+              5
+              ]
+               
+              M
+              e
+              d
+              i
+              u
+              m
+            </span>
           </a>
           <a
-            class="bg-white w-full rounded-lg justify-center items-center flex"
+            class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
             href="/game"
           >
-            6
-            x
-            6
+            <div
+              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            />
+            <span
+              class="relative pl-4 group-hover:text-black group-hover:font-bold"
+            >
+              [
+              6
+              x
+              6
+              ]
+               
+              H
+              a
+              r
+              d
+            </span>
           </a>
         </div>
       </div>

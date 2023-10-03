@@ -5,11 +5,16 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <button
+        class="absolute right-0 top-0 text-white"
+      >
+        Settings
+      </button>
       <div
-        class="flex justify-center items-center relative"
+        class="flex justify-center items-center relative aspect-square"
       >
         <div
-          class="absolute aspect-square grid justify-items-center items-center w-full p-[30px]"
+          class="absolute aspect-square grid justify-items-center items-center p-[30px] w-full"
           style="grid-template: repeat(3, 1fr) / repeat(3, 1fr);"
         >
           <button
@@ -65,38 +70,39 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
         />
       </div>
       <div
-        class="space-x-4"
-      >
-        <button
-          class="bg-white p-2 rounded-md"
-        >
-          Rotate left
-        </button>
-        <button
-          class="bg-red-700 p-2 rounded-md text-white"
-        >
-          Reset
-        </button>
-        <button
-          class="bg-white p-2 rounded-md"
-        >
-          Rotate right
-        </button>
-      </div>
-      <div
-        class="text-white"
+        class="text-white mt-4 font-bold text-center"
       >
         Move count: 
         0
       </div>
+      <div
+        class="flex justify-center mt-4 space-x-2 "
+        style="width: 240px;"
+      >
+        <button
+          class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
+        >
+          Rotate left
+        </button>
+        <button
+          class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
+        >
+          Rotate right
+        </button>
+      </div>
     </div>
   </body>,
   "container": <div>
+    <button
+      class="absolute right-0 top-0 text-white"
+    >
+      Settings
+    </button>
     <div
-      class="flex justify-center items-center relative"
+      class="flex justify-center items-center relative aspect-square"
     >
       <div
-        class="absolute aspect-square grid justify-items-center items-center w-full p-[30px]"
+        class="absolute aspect-square grid justify-items-center items-center p-[30px] w-full"
         style="grid-template: repeat(3, 1fr) / repeat(3, 1fr);"
       >
         <button
@@ -152,29 +158,25 @@ exports[`[Game] Rendering > should render correctly with default config 1`] = `
       />
     </div>
     <div
-      class="space-x-4"
+      class="text-white mt-4 font-bold text-center"
+    >
+      Move count: 
+      0
+    </div>
+    <div
+      class="flex justify-center mt-4 space-x-2 "
+      style="width: 240px;"
     >
       <button
-        class="bg-white p-2 rounded-md"
+        class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
       >
         Rotate left
       </button>
       <button
-        class="bg-red-700 p-2 rounded-md text-white"
-      >
-        Reset
-      </button>
-      <button
-        class="bg-white p-2 rounded-md"
+        class="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
       >
         Rotate right
       </button>
-    </div>
-    <div
-      class="text-white"
-    >
-      Move count: 
-      0
     </div>
   </div>,
   "debug": [Function],

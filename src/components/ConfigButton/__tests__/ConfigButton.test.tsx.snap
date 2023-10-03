@@ -6,8 +6,35 @@ exports[`[ConfigButton] Rendering > should render correctly 1`] = `
   "baseElement": <body>
     <div>
       <a
-        class="bg-white w-full rounded-lg justify-center items-center flex"
+        class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
         href="/game"
+      >
+        <div
+          class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+        />
+        <span
+          class="relative pl-4 group-hover:text-black group-hover:font-bold"
+        >
+          B
+          u
+          t
+          t
+          o
+          n
+        </span>
+      </a>
+    </div>
+  </body>,
+  "container": <div>
+    <a
+      class="text-white h-12 border-2 border-white flex items-center p-0 relative group cursor-clickable"
+      href="/game"
+    >
+      <div
+        class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+      />
+      <span
+        class="relative pl-4 group-hover:text-black group-hover:font-bold"
       >
         B
         u
@@ -15,20 +42,7 @@ exports[`[ConfigButton] Rendering > should render correctly 1`] = `
         t
         o
         n
-      </a>
-    </div>
-  </body>,
-  "container": <div>
-    <a
-      class="bg-white w-full rounded-lg justify-center items-center flex"
-      href="/game"
-    >
-      B
-      u
-      t
-      t
-      o
-      n
+      </span>
     </a>
   </div>,
   "debug": [Function],

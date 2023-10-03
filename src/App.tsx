@@ -6,10 +6,9 @@ const router = createBrowserRouter([
   { path: "game", Component: Game },
 ]);
 
-// todo check the main class styles
 export default function App() {
   return (
-    <main className="h-screen flex justify-center items-center flex-col bg-black">
+    <main className="h-screen flex justify-center items-center flex-col bg-gradient-radial from-[#121212] to-[#000000]">
       <RouterProvider router={router} />
     </main>
   );
