@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Game from "../Game";
+import { BrowserRouter } from "react-router-dom";
 
 beforeEach(() => localStorage.clear());
 
@@ -33,7 +34,7 @@ describe("[Game] Rendering", () => {
 
 describe("[Game] Events", () => {
   beforeEach(() => {
-    render(<Game />);
+    render(<Game />, { wrapper: BrowserRouter });
   });
 
   it("should have the background as red for a clicked point and not for others", () => {
@@ -63,7 +64,10 @@ describe("[Game] Events", () => {
     let moves = screen.getByText(/Move count: 1/);
     expect(moves).toBeInTheDocument();
 
-    const reset = screen.getByText(/Reset/);
+    let setting = screen.getByLabelText(/Settings/);
+    fireEvent.click(setting);
+
+    const reset = screen.getByText(/Reset game/i);
     fireEvent.click(reset);
 
     moves = screen.getByText(/Move count: 0/);

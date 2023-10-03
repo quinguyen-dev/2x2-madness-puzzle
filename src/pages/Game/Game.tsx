@@ -48,6 +48,7 @@ export default function Game() {
         }`}
         style={{ minWidth: 60 * size }}
       >
+        {/* Settings button */}
         <button
           aria-label="Settings"
           className="absolute top-0 right-0"
@@ -66,6 +67,8 @@ export default function Game() {
             ></path>
           </svg>
         </button>
+
+        {/* Board rendering */}
         <div
           className="flex justify-center items-center relative aspect-square"
           style={{ width: 60 * size }}
@@ -112,6 +115,8 @@ export default function Game() {
             height={size * 60}
           />
         </div>
+
+        {/* Controls and stats */}
         <div className="text-white mt-4 font-bold text-center">
           Move count: {state.board.moves}
         </div>
@@ -120,12 +125,14 @@ export default function Game() {
           style={{ width: size * 60 }}
         >
           <button
+            aria-label="Rotate the group counterclockwise"
             className="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
             onClick={() => rotateGroup(Direction.COUNTERCLOCKWISE)}
           >
             Rotate left
           </button>
           <button
+            aria-label="Rotate the group clockwise"
             className="border-2 border-white text-white p-2 w-full hover:bg-white hover:text-black"
             onClick={() => rotateGroup(Direction.CLOCKWISE)}
           >
@@ -134,11 +141,13 @@ export default function Game() {
         </div>
       </div>
 
+      {/* Settings screen */}
       {settings && (
         <div className="absolute z-40 max-w-[400px] w-full p-4 bg-[#121214] text-white border-2 border-gray-700 flex flex-col">
           <div className="flex justify-between">
             <h1 className="text-xl font-bold inline">Settings</h1>
             <button
+              aria-label="Close the settings menu"
               className="text-xl cursor-clickable"
               onClick={() => setSettings(false)}
             >
@@ -152,9 +161,11 @@ export default function Game() {
             Play another configuration
           </Link>
           <button
+            aria-label="Reset the game"
             className="text-left mt-2 p-2 box-border border-2 border-red-600 bg-red-600 hover:bg-red-700 hover:border-red-700"
             onClick={() => {
               resetGame(configuration);
+              setSettings(false);
             }}
           >
             Reset game

@@ -21,7 +21,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
             href="/game"
           >
             <div
-              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
             />
             <span
               class="relative pl-4 group-hover:text-black group-hover:font-bold"
@@ -43,7 +43,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
             href="/game"
           >
             <div
-              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
             />
             <span
               class="relative pl-4 group-hover:text-black group-hover:font-bold"
@@ -67,7 +67,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
             href="/game"
           >
             <div
-              class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+              class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
             />
             <span
               class="relative pl-4 group-hover:text-black group-hover:font-bold"
@@ -105,7 +105,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
           href="/game"
         >
           <div
-            class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
           />
           <span
             class="relative pl-4 group-hover:text-black group-hover:font-bold"
@@ -127,7 +127,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
           href="/game"
         >
           <div
-            class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
           />
           <span
             class="relative pl-4 group-hover:text-black group-hover:font-bold"
@@ -151,7 +151,7 @@ exports[`[Configuration] Rendering > should render correctly 1`] = `
           href="/game"
         >
           <div
-            class="absolute w-0 bg-white inset-0 transition-all duration-[250ms] group-hover:w-full"
+            class="absolute w-0 bg-white inset-0 transition-all duration-[300ms] ease group-hover:w-full"
           />
           <span
             class="relative pl-4 group-hover:text-black group-hover:font-bold"
